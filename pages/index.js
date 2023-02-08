@@ -1,14 +1,13 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 export default function Home({ liff, liffError }) {
-
+  const [userId, setUserId] = useState('')
   //console.log(liff.getIDToken())
   useEffect(() => {
-    console.log(liff)
     if(liff){
       const userId = liff.getIDToken()
-      alert(userId)
+      setUserId(userId)
     }
     
   },[])
@@ -38,6 +37,7 @@ export default function Home({ liff, liffError }) {
         >
           LIFF Documentation
         </a>
+        <div>userId: {userId}</div>
       </main>
     </div>
   );
