@@ -50,7 +50,7 @@ export default function Home({ liff, liffError }) {
         }
         <div>
         {
-          isloading ? 'loading' : 
+          isLoading ? 'loading' : 
             data ? data.message : null 
         }
         </div>
