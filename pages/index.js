@@ -5,12 +5,16 @@ export default function Home({ liff, liffError }) {
   const [userId, setUserId] = useState('')
   //console.log(liff.getIDToken())
   useEffect(() => {
-    if(liff){
+    if(liff && liff.isLoggedIn()){
       const userId = liff.getIDToken()
       setUserId(userId)
     }
+    // if (!liff.isLoggedIn()) {
+    //   liff.login();
+    // }
     
-  },[])
+    
+  },[liff])
   return (
     <div>
       <Head>

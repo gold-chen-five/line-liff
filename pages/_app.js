@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
-
 function MyApp({ Component, pageProps }) {
   const [liffObject, setLiffObject] = useState(null);
   const [liffError, setLiffError] = useState(null);
