@@ -46,9 +46,8 @@ export default function Home({ liff, liffError }) {
         </a>
         <div>userId: {userId}</div>
         {
-          userId && <button onClick={() => setSendUserId('123')}>send user ID</button>
+          userId && <button onClick={() => setSendUserId(userId)}>send user ID</button>
         }
-        <button onClick={() => setSendUserId('123')}>send user ID</button>
       </main>
     </div>
   );
