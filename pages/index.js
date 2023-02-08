@@ -1,20 +1,23 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useEffect,useState } from "react";
+import { useSendUserId } from "hook/useSendUserId";
+
 export default function Home({ liff, liffError }) {
-  const [userId, setUserId] = useState('')
-  //console.log(liff.getIDToken())
+  const [userId, setUserId] = useState()
+  const [sendUserId,setSendUserId] = useState()
+  const {data,isLoading,isError} = useSendUserId(sendUserId)
+
   useEffect(() => {
     if(liff && liff.isLoggedIn()){
       const userId = liff.getIDToken()
       setUserId(userId)
     }
-    // if (!liff.isLoggedIn()) {
-    //   liff.login();
-    // }
-    
-    
   },[liff])
+
+  useEffect(() => {
+    console.log(data)
+  },[data])
   return (
     <div>
       <Head>
@@ -42,6 +45,10 @@ export default function Home({ liff, liffError }) {
           LIFF Documentation
         </a>
         <div>userId: {userId}</div>
+        {
+          userId && <button onClick={() => setSendUserId('123')}>send user ID</button>
+        }
+        <button onClick={() => setSendUserId('123')}>send user ID</button>
       </main>
     </div>
   );
