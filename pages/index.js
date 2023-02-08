@@ -48,6 +48,12 @@ export default function Home({ liff, liffError }) {
         {
           userId && <button onClick={() => setSendUserId(userId)}>send user ID</button>
         }
+        <div>
+        {
+          isloading ? 'loading' : 
+            data ? data.message : null 
+        }
+        </div>
       </main>
     </div>
   );
