@@ -11,7 +11,7 @@ export const useSendUserId = (userId) => {
             const res = await fetch('/api/writeUserId',{
                 method: 'POST',
                 headers: {'content-type': 'application/json'},
-                body: JSON.stringify({userId})
+                body: JSON.stringify({userId:userId})
             }).then(data => data.json())
             setIsLoading(false)
             setData(res)
