@@ -8,12 +8,13 @@ const writeUserId = async (req,res) => {
     const { userId} = body
 
     //read json file
+    //process.cwd()
     const filePath = path.join(process.cwd(), 'users.json');
     const jsonData = await fsPromises.readFile(filePath);
     const objectData = JSON.parse(jsonData);
     objectData.userId.push(userId)
     //write json file
-    await fsPromises.writeFile(filePath,JSON.stringify(objectData))
+    await fsPromises.writeFile('/tmp/users.json',JSON.stringify(objectData))
     res.json({message: 'ok'})
     
 }
