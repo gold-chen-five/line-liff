@@ -6,7 +6,7 @@ import { useSendUserId } from "hook/useSendUserId";
 export default function Home({ liff, liffError }) {
   const [userId, setUserId] = useState()
   const [sendUserId,setSendUserId] = useState()
-  const {data,isLoading,isError} = useSendUserId(sendUserId)
+  const {data,isLoading,isError,errMsg} = useSendUserId(sendUserId)
 
   useEffect(() => {
     if(liff && liff.isLoggedIn()){
@@ -56,6 +56,7 @@ export default function Home({ liff, liffError }) {
         }
         </div>
         <div>{ isError ? 'error' : null}</div>
+        <div>{isError && errMsg}</div>
       </main>
     </div>
   );

@@ -3,6 +3,7 @@ export const useSendUserId = (userId) => {
     const [data,setData] = useState('')
     const [isLoading,setIsLoading] = useState(false)
     const [isError,setIsError] = useState(false)
+    const [errMsg,setErrMsg] = useState()
 
     const fetchData = async () => {
         setIsLoading(true)
@@ -16,6 +17,7 @@ export const useSendUserId = (userId) => {
             setData(res)
         }
         catch(err){
+            setErrMsg(err)
             setIsError(true)
             setIsLoading(false)
         }
@@ -31,6 +33,7 @@ export const useSendUserId = (userId) => {
     return {
         data,
         isLoading,
-        isError
+        isError,
+        errMsg
     }
 }
