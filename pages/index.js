@@ -2,11 +2,13 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useEffect,useState } from "react";
 import { useSendUserId } from "hook/useSendUserId";
+import { useGetUserId } from "hook/useGetUserId";
 
 export default function Home({ liff, liffError }) {
   const [userId, setUserId] = useState()
   const [sendUserId,setSendUserId] = useState()
   const {data,isLoading,isError,errMsg} = useSendUserId(sendUserId)
+  const {userData,isUserLoading,isUserError} = useGetUserId()
 
   useEffect(() => {
     if(liff && liff.isLoggedIn()){
@@ -15,9 +17,6 @@ export default function Home({ liff, liffError }) {
     }
   },[liff])
 
-  useEffect(() => {
-    console.log(data)
-  },[data])
   return (
     <div>
       <Head>
@@ -48,7 +47,7 @@ export default function Home({ liff, liffError }) {
         {
           userId && <button onClick={() => setSendUserId(userId)}>send user ID</button>
         }
-        <button onClick={() => setSendUserId('hello')}>send user ID</button>
+        {/* <button onClick={() => setSendUserId('hello')}>send user ID</button> */}
         <div>
         {
           isLoading ? 'loading' : 
@@ -57,6 +56,18 @@ export default function Home({ liff, liffError }) {
         </div>
         <div>{ isError ? 'error' : null}</div>
         <div>{isError && errMsg}</div>
+
+        <div>
+          {
+            isUserLoading ?  'loading' : userData && <div>
+              {
+                userData.map((id,index) => <p key={index}>
+                  {id}
+                </p>)
+              }
+            </div>
+          }
+        </div>
       </main>
     </div>
   );
