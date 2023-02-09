@@ -1,5 +1,6 @@
 import fsPromises from 'fs/promises';
 import path from 'path'
+import { corsMiddleware } from '../../src/middleware/handleCors'
 
 const writeUserId = async (req,res) => {
     await corsMiddleware(req,res,'*')
