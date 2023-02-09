@@ -7,7 +7,7 @@ export const useSendUserId = (userId) => {
     const fetchData = async () => {
         setIsLoading(true)
         try{
-            const res = await fetch('/api/writeUserId',{
+            const res = await fetch('https://line-liff-delta.vercel.app/api/writeUserId',{
                 method: 'POST',
                 headers: {'content-type': 'application/json'},
                 body: JSON.stringify({userId})
@@ -17,6 +17,7 @@ export const useSendUserId = (userId) => {
         }
         catch(err){
             setIsError(true)
+            setIsLoading(false)
         }
         
     }

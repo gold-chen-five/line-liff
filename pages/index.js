@@ -55,6 +55,7 @@ export default function Home({ liff, liffError }) {
             data ? data.message : null 
         }
         </div>
+        <div>{ isError ? 'error' : null}</div>
       </main>
     </div>
   );
